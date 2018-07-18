@@ -14,8 +14,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+.byebug_history
 
 # Ignore vendor directory.
 /vendor
 
 coverage
+
+# Ignore IDE specific directories
+.idea/

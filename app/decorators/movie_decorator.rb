@@ -1,9 +1,22 @@
 class MovieDecorator < Draper::Decorator
   delegate_all
 
-  def cover
-    "http://lorempixel.com/100/150/" +
-      %w[abstract nightlife transport].sample +
-      "?a=" + SecureRandom.uuid
+  def initialize(object, options)
+    super(object, options)
+
+    @result = ExternalAPI::MovieConsumer.new.movie(object.title)
   end
+
+  def cover
+    @result[:cover]
+  end
+
+  def plot
+    @result[:plot]
+  end
+
+  def rating
+    @result[:rating]
+  end
+
 end
