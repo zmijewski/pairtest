@@ -14,7 +14,7 @@ gem "uglifier"
 gem "faraday"
 gem "faraday_middleware"
 gem "typhoeus"
-
+gem "sidekiq"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
