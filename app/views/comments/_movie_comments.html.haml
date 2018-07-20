@@ -1,0 +1,14 @@
+- @movie.comments.each do |comment|
+  %div
+    %b= comment.user.email
+    wrote:
+    - if current_user&.id == comment.user.id
+      = link_to 'Delete this comment',
+      movie_comment_path(movie_id: @movie.id, id: comment.id),
+      method: :delete,
+      class: "pull-right"
+    %p= comment.content
+    %span
+      added at
+      = comment.updated_at
+    %hr

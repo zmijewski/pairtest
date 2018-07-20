@@ -1,0 +1,7 @@
+= form_for([@movie, @movie.comments.build]) do |f|
+  .form-group
+    = f.text_area :content, autofocus: true, class: 'form-control'
+    = f.hidden_field :user_id
+    = f.hidden_field :movie_id
+  .actions
+    = f.button "Submit", class: 'btn btn-default'
