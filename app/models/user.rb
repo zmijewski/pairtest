@@ -27,4 +27,16 @@ class User < ApplicationRecord
 
   validates :phone_number, format: { with: /\A[+]?\d+(?>[- .]\d+)*\z/, allow_nil: true }
 
+  def self.top_commenters_from_last_week
+    Rails.cache.fetch("top_users", expires_in: 60.seconds) do
+      select("name, email, count(*) as count")
+        .where("comments.updated_at > ?", 7.days.ago)
+        .joins(:comments)
+        .group("id")
+        .order("count(*) desc")
+        .limit(10)
+      .to_a
+    end
+  end
+
 end

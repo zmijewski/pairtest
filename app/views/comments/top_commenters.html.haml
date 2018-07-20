@@ -1,0 +1,16 @@
+.row
+  .col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
+    %h1= 'Top commenters from last 7 days'
+    %table.table.table-striped
+      %thead
+        %th= 'Rank'
+        %th= 'User name'
+        %th= 'User email'
+        %th= 'Comments count'
+      %tbody
+        - @commenters.each_with_index do |commenter, i|
+          %tr
+            %td= i + 1
+            %td= commenter.name
+            %td= commenter.email
+            %td= commenter.count
